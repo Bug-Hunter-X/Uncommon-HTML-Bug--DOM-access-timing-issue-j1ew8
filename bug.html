@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+
+  <script>
+    // This script attempts to access an element that doesn't exist immediately
+    // after the page loads.  The browser might not have finished rendering the DOM.
+    const element = document.getElementById('nonExistentElement');
+    if (element) {
+      element.innerHTML = 'This text should NOT be visible';
+    }
+    
+    //Correct way to handle this would be to use DOMContentLoaded event.
+    document.addEventListener('DOMContentLoaded', function(){
+        const element2 = document.getElementById('myDiv');
+        if(element2){
+            element2.innerHTML = 'This text is visible after the DOM is loaded';
+        }
+    });
+  </script>
+</body>
+</html>
