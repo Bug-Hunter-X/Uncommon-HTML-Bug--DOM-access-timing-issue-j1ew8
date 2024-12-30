@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+
+  <script>
+    // Correct way to handle this:
+    document.addEventListener('DOMContentLoaded', function() {
+      const element = document.getElementById('myDiv');
+      if (element) {
+        element.innerHTML = 'This text is visible after the DOM is loaded';
+      }
+    });
+  </script>
+</body>
+</html>
